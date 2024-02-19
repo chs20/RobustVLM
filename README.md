@@ -2,14 +2,14 @@
 This repository contains code for the paper "Robust CLIP: Unsupervised Adversarial Fine-Tuning of Vision Embeddings for Robust Large Vision-Language Models".
 
 <p align="center">
-    <img src="teaser0.png" width="500">
+    <img src="assets/teaser0.png" width="500">
     <br>
 </p>
 
 ******
 
 <p align="center">
-    <img src="teaser1.png" width="800">
+    <img src="assets/teaser1.png" width="800">
 </p>
 
 
