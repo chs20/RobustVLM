@@ -1,0 +1,13 @@
+wds/vtab/cifar10
+wds/stl10
+wds/vtab/cifar100
+wds/cars
+wds/vtab/caltech101
+wds/vtab/pets
+wds/vtab/flowers
+wds/vtab/dtd
+wds/vtab/eurosat
+wds/fgvc_aircraft
+wds/vtab/pcam
+wds/imagenet-r
+wds/imagenet_sketch

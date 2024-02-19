@@ -1,0 +1,2 @@
+ViT-L-14,openai
+ViT-L-14,/path/to/fare_eps_4.pt
