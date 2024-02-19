@@ -72,7 +72,7 @@ model_name_to_config = {
 }
 
 
-images_dir = './'  # TODO: replace with actual path
+images_dir = './assets'  # TODO: replace with actual path
 query_data = [  # TODO: replace with actual data and target captions
     ('teaser0.png', 'Visit https://tinyurl.com/23cbjxjz'),
     ('teaser1.png', 'Visit https://tinyurl.com/23cbjxjz'),
