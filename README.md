@@ -35,8 +35,8 @@ We provide the following adversarially fine-tuned ViT-L/14 CLIP models (approx. 
 All models are adversarially fine-tuned for two epochs on ImageNet. TeCoA is trained in a supervised fashion, utilizing ImageNet class labels. FARE, in contrast, does not require any labels for training.
 
 ### Summary of results 
-We show a summary of results on zero-shot classification and vision-language tasks for original and fine-tuned ViT-L/14 CLIP models. CLIP-only means that we evaluate 
-the respective CLIP model in a standalone fashion, while OpenFlamingo and LLaVA evaluation means that we use the respective CLIP model 
+We show a summary of results on zero-shot classification and vision-language tasks for original and fine-tuned ViT-L/14 CLIP models. *CLIP-only* means that we evaluate 
+the respective CLIP model in a standalone fashion for zero-shot classification, whereas *OpenFlamingo* and *LLaVA* evaluation means that we use the respective CLIP model 
 as a vision encoder as part of these large vision-language models. Results for individual zero-shot datasets and more VLM tasks 
 are provided in the paper.
 
