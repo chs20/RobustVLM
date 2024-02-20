@@ -1,5 +1,5 @@
 # RobustVLM
-This repository contains code for the paper "Robust CLIP: Unsupervised Adversarial Fine-Tuning of Vision Embeddings for Robust Large Vision-Language Models".
+This repository contains code for the [paper](https://arxiv.org/abs/2402.12336) "Robust CLIP: Unsupervised Adversarial Fine-Tuning of Vision Embeddings for Robust Large Vision-Language Models".
 
 <p align="center">
     <img src="assets/teaser0.png" width="500">
@@ -302,4 +302,10 @@ This repository gratefully forks from
 ## Citation
 If you find this repository useful, please consider citing our paper:
 ```
+@article{schlarmann2024robustclip,
+    title={Robust CLIP: Unsupervised Adversarial Fine-Tuning of Vision Embeddings for Robust Large Vision-Language Models}, 
+    author={Christian Schlarmann and Naman Deep Singh and Francesco Croce and Matthias Hein},
+    year={2024},
+    journal={arXiv:2402.12336}
+}
 ```
