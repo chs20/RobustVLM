@@ -1,5 +1,7 @@
 # RobustVLM
-This repository contains code for the [paper](https://arxiv.org/abs/2402.12336) "Robust CLIP: Unsupervised Adversarial Fine-Tuning of Vision Embeddings for Robust Large Vision-Language Models".
+[[Paper]](https://arxiv.org/abs/2402.12336) [[HuggingFace]](https://huggingface.co/collections/chs20/robust-clip-65d913e552eca001fdc41978) [[BibTeX]](#citation) 
+
+This repository contains code for the paper "Robust CLIP: Unsupervised Adversarial Fine-Tuning of Vision Embeddings for Robust Large Vision-Language Models".
 
 <p align="center">
     <img src="assets/teaser0.png" width="500">
@@ -19,6 +21,14 @@ adversarial robustness on a variety of vision-language tasks, without requiring 
 Moreover, we improve the robustness of CLIP to adversarial attacks in zero-shot classification settings, while maintaining 
 higher clean accuracy than previous adversarial fine-tuning methods.
 
+## Table of Contents
+- [Installation](#installation)
+- [Models](#models)
+    - [Loading pretrained models](#loading-pretrained-models)
+    - [Summary of results](#summary-of-results)
+- [Training](#training)
+- [Evaluation](#evaluation)
+
 ## Installation
 The code is tested with Python 3.11. To install the required packages, run:
 ```shell
@@ -27,12 +37,34 @@ pip install -r requirements.txt
 
 ## Models
 We provide the following adversarially fine-tuned ViT-L/14 CLIP models (approx. 1.1 GB each):
-- [TeCoA<sup>2</sup>](https://nc.mlcloud.uni-tuebingen.de/index.php/s/5SQzfAbp8JHS3o7): Supervised adversarial fine-tuning with $\ell_\infty$ norm, $\varepsilon=\frac{2}{255}$, see [Mao et al. (2023)](https://arxiv.org/abs/2212.07016)
-- [TeCoA<sup>4</sup>](https://nc.mlcloud.uni-tuebingen.de/index.php/s/92req4Pak5i56tX): Supervised adversarial fine-tuning with $\ell_\infty$ norm, $\varepsilon=\frac{4}{255}$
-- [FARE<sup>2</sup>](https://nc.mlcloud.uni-tuebingen.de/index.php/s/d83Lqm8Jpowxp4m) (ours): Unsupervised adversarial fine-tuning with $\ell_\infty$ norm, $\varepsilon=\frac{2}{255}$
-- [FARE<sup>4</sup>](https://nc.mlcloud.uni-tuebingen.de/index.php/s/jnQ2qmp9tst8kyQ) (ours): Unsupervised adversarial fine-tuning with $\ell_\infty$ norm, $\varepsilon=\frac{4}{255}$
+
+| Model             | Link                                                                                             | Proposed by                                            | Notes                                                                                     |
+|-------------------|--------------------------------------------------------------------------------------------------|--------------------------------------------------------|-------------------------------------------------------------------------------------------|
+| TeCoA<sup>2</sup> | [Link](https://nc.mlcloud.uni-tuebingen.de/index.php/s/5SQzfAbp8JHS3o7/download/tecoa_eps_2.pt)  | [Mao et al. (2023)](https://arxiv.org/abs/2212.07016)  | Supervised adversarial fine-tuning with $\ell_\infty$ norm, $\varepsilon=\frac{2}{255}$   |
+| TeCoA<sup>4</sup> | [Link](https://nc.mlcloud.uni-tuebingen.de/index.php/s/92req4Pak5i56tX/download/tecoa_eps_4.pt)  | [Mao et al. (2023)](https://arxiv.org/abs/2212.07016)  | Supervised adversarial fine-tuning with $\ell_\infty$ norm, $\varepsilon=\frac{4}{255}$   |
+| FARE<sup>2</sup>  | [Link](https://nc.mlcloud.uni-tuebingen.de/index.php/s/d83Lqm8Jpowxp4m/download/fare_eps_2.pt)   | ours                                                   | Unsupervised adversarial fine-tuning with $\ell_\infty$ norm, $\varepsilon=\frac{2}{255}$ |
+| FARE<sup>4</sup>  | [Link](https://nc.mlcloud.uni-tuebingen.de/index.php/s/jnQ2qmp9tst8kyQ/download/fare_eps_4.pt)   | ours                                                   | Unsupervised adversarial fine-tuning with $\ell_\infty$ norm, $\varepsilon=\frac{4}{255}$ |
+
+The models also available on [HuggingFace](https://huggingface.co/collections/chs20/robust-clip-65d913e552eca001fdc41978).
 
 All models are adversarially fine-tuned for two epochs on ImageNet. TeCoA is trained in a supervised fashion, utilizing ImageNet class labels. FARE, in contrast, does not require any labels for training.
+
+### Loading pretrained models
+The provided checkpoints correspond to the vision encoder of CLIP. To load the full CLIP model (including the text encoder), you can use the following code:
+```python
+import torch
+from open_clip import create_model_and_transforms
+model, _, image_processor = create_model_and_transforms(
+            'ViT-L-14', pretrained='openai', device='cpu'
+        )
+checkpoint = torch.load('/path/to/fare_eps_2.pt', map_location=torch.device('cpu'))
+model.visual.load_state_dict(checkpoint)
+```
+Alternatively load directly from HuggingFace:
+```python
+from open_clip import create_model_and_transforms
+model, _, image_processor = open_clip.create_model_and_transforms('hf-hub:chs20/fare2-clip')
+```
 
 ### Summary of results 
 We show a summary of results on zero-shot classification and vision-language tasks for original and fine-tuned ViT-L/14 CLIP models. *CLIP-only* means that we evaluate 
@@ -214,18 +246,6 @@ are provided in the paper.
     </tr>
 </table>
 
-### Loading pretrained models
-The provided checkpoints correspond to the vision encoder of CLIP. To load the full CLIP model (including the text encoder), you can use the following code:
-```python
-import torch
-from open_clip import create_model_and_transforms
-model, _, image_processor = create_model_and_transforms(
-            'ViT-L-14', pretrained='openai', device='cpu'
-        )
-checkpoint = torch.load('/path/to/fare_eps_2.pt', map_location=torch.device('cpu'))
-model.visual.load_state_dict(checkpoint)
-```
-
 ## Training
 
 - TeCoA<sup>4</sup>
@@ -301,7 +321,7 @@ This repository gratefully forks from
 
 ## Citation
 If you find this repository useful, please consider citing our paper:
-```
+```bibtex
 @article{schlarmann2024robustclip,
     title={Robust CLIP: Unsupervised Adversarial Fine-Tuning of Vision Embeddings for Robust Large Vision-Language Models}, 
     author={Christian Schlarmann and Naman Deep Singh and Francesco Croce and Matthias Hein},

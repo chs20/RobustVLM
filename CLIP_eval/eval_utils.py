@@ -51,7 +51,7 @@ def load_clip_model(clip_model_name, pretrained, beta=0.):
         print('retrying by loading whole model..', file=sys.stderr)
         torch.cuda.empty_cache()
         model, _, image_processor = open_clip.create_model_and_transforms(
-            clip_model_name, pretrained=pretrained, device='cpu'
+            clip_model_name, pretrained=pretrained, force_quick_gelu=True, device='cpu'
         )
     model.eval()
 
