@@ -45,7 +45,7 @@ We provide the following adversarially fine-tuned ViT-L/14 CLIP models (approx. 
 | FARE<sup>2</sup>  | [Link](https://nc.mlcloud.uni-tuebingen.de/index.php/s/d83Lqm8Jpowxp4m/download/fare_eps_2.pt)   | ours                                                   | Unsupervised adversarial fine-tuning with $\ell_\infty$ norm, $\varepsilon=\frac{2}{255}$ |
 | FARE<sup>4</sup>  | [Link](https://nc.mlcloud.uni-tuebingen.de/index.php/s/jnQ2qmp9tst8kyQ/download/fare_eps_4.pt)   | ours                                                   | Unsupervised adversarial fine-tuning with $\ell_\infty$ norm, $\varepsilon=\frac{4}{255}$ |
 
-The models also available on [HuggingFace](https://huggingface.co/collections/chs20/robust-clip-65d913e552eca001fdc41978).
+The models are also available on [HuggingFace](https://huggingface.co/collections/chs20/robust-clip-65d913e552eca001fdc41978).
 
 All models are adversarially fine-tuned for two epochs on ImageNet. TeCoA is trained in a supervised fashion, utilizing ImageNet class labels. FARE, in contrast, does not require any labels for training.
 
