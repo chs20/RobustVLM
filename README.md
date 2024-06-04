@@ -1,7 +1,7 @@
 # RobustVLM
 [[Paper]](https://arxiv.org/abs/2402.12336) [[HuggingFace]](https://huggingface.co/collections/chs20/robust-clip-65d913e552eca001fdc41978) [[BibTeX]](#citation) 
 
-This repository contains code for the paper "Robust CLIP: Unsupervised Adversarial Fine-Tuning of Vision Embeddings for Robust Large Vision-Language Models" (ICML 2024).
+This repository contains code for the paper "Robust CLIP: Unsupervised Adversarial Fine-Tuning of Vision Embeddings for Robust Large Vision-Language Models" (_Oral@ICML 2024_).
 
 <p align="center">
     <img src="assets/teaser0.png" width="500">
@@ -289,6 +289,8 @@ Download the OpenFlamingo 9B [model](https://huggingface.co/openflamingo/OpenFla
 ```shell
 ./bash/of_eval_9B.sh
 ```
+
+Some non-standard annotation files are supplied [here](https://nc.mlcloud.uni-tuebingen.de/index.php/s/mtRnQFaZJkR9zaX) and [here](https://github.com/mlfoundations/open_flamingo/tree/main/open_flamingo/eval/data).
 
 ### VLM Stealthy Targeted Attacks
 For targeted attacks on COCO, run
