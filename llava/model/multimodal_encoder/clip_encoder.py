@@ -54,10 +54,7 @@ class CLIPVisionTower(nn.Module):
             vision_model = model_orig.visual
             if pretrained_ckpt != 'openai':
                 vision_model.load_state_dict(torch.load(pretrained_ckpt, map_location='cpu'))
-            # self.image_processor = image_processor
-            # self.image_processor = CLIPImageProcessor.from_pretrained(self.vision_tower_name)
             self.image_processor = CLIPImageProcessor.from_pretrained('openai/clip-vit-large-patch14')  # 224
-            # model_orig = vision_model
             # llava operates on the second to last layer output, so we remove the last layer
             vision_model.transformer.resblocks = vision_model.transformer.resblocks[:-1]; print("removing last layer of vision model")
             model_orig = ClipVisionModel(
@@ -73,15 +70,13 @@ class CLIPVisionTower(nn.Module):
             self.image_processor = CLIPImageProcessor.from_pretrained(self.vision_tower_name)
             self.vision_tower = CLIPVisionModel.from_pretrained(self.vision_tower_name)
 
-        # couldn;t find a quicker way of doing this, should work for now but suboptimal
-        # self.vision_tower.dtype = CLIPVisionModel.from_pretrained(self.vision_tower_name).dtype
         self.vision_tower.requires_grad_(False)
         self.is_loaded = True
 
     def feature_select(self, image_forward_outs):
         
         if self.non_llava:
-            image_features = image_forward_outs#.hidden_states[1:]
+            image_features = image_forward_outs
         else:
             image_features = image_forward_outs.hidden_states[self.select_layer]
         

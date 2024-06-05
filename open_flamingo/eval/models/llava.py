@@ -17,7 +17,7 @@ from llava.conversation import conv_templates, SeparatorStyle
 
 
 class EvalModelLLAVA(BaseEvalModel):
-    """OpenFlamingo model evaluation.
+    """LLaVA model evaluation.
 
     Attributes:
       model (nn.Module): Underlying Torch model.

@@ -1,7 +1,7 @@
 # RobustVLM
 [[Paper]](https://arxiv.org/abs/2402.12336) [[HuggingFace]](https://huggingface.co/collections/chs20/robust-clip-65d913e552eca001fdc41978) [[BibTeX]](#citation) 
 
-This repository contains code for the paper "Robust CLIP: Unsupervised Adversarial Fine-Tuning of Vision Embeddings for Robust Large Vision-Language Models" (ICML 2024).
+This repository contains code for the paper "Robust CLIP: Unsupervised Adversarial Fine-Tuning of Vision Embeddings for Robust Large Vision-Language Models" (_Oral@ICML 2024_).
 
 <p align="center">
     <img src="assets/teaser0.png" width="500">
@@ -45,7 +45,7 @@ We provide the following adversarially fine-tuned ViT-L/14 CLIP models (approx. 
 | FARE<sup>2</sup>  | [Link](https://nc.mlcloud.uni-tuebingen.de/index.php/s/d83Lqm8Jpowxp4m/download/fare_eps_2.pt)   | ours                                                   | Unsupervised adversarial fine-tuning with $\ell_\infty$ norm, $\varepsilon=\frac{2}{255}$ |
 | FARE<sup>4</sup>  | [Link](https://nc.mlcloud.uni-tuebingen.de/index.php/s/jnQ2qmp9tst8kyQ/download/fare_eps_4.pt)   | ours                                                   | Unsupervised adversarial fine-tuning with $\ell_\infty$ norm, $\varepsilon=\frac{4}{255}$ |
 
-The models also available on [HuggingFace](https://huggingface.co/collections/chs20/robust-clip-65d913e552eca001fdc41978).
+The models are also available on [HuggingFace](https://huggingface.co/collections/chs20/robust-clip-65d913e552eca001fdc41978).
 
 All models are adversarially fine-tuned for two epochs on ImageNet. TeCoA is trained in a supervised fashion, utilizing ImageNet class labels. FARE, in contrast, does not require any labels for training.
 
@@ -289,6 +289,8 @@ Download the OpenFlamingo 9B [model](https://huggingface.co/openflamingo/OpenFla
 ```shell
 ./bash/of_eval_9B.sh
 ```
+
+Some non-standard annotation files are supplied [here](https://nc.mlcloud.uni-tuebingen.de/index.php/s/mtRnQFaZJkR9zaX) and [here](https://github.com/mlfoundations/open_flamingo/tree/main/open_flamingo/eval/data).
 
 ### VLM Stealthy Targeted Attacks
 For targeted attacks on COCO, run
