@@ -21,11 +21,16 @@ adversarial robustness on a variety of vision-language tasks, without requiring 
 Moreover, we improve the robustness of CLIP to adversarial attacks in zero-shot classification settings, while maintaining 
 higher clean accuracy than previous adversarial fine-tuning methods.
 
+## News
+- Check out our [follow-up project](https://github.com/fra31/perceptual-metrics), where we show that adversarially robust CLIP models are excellent *perceptual metrics*, both in terms of clean performance and robustness.
+- We release robust [base-sized CLIP models](#additional-models).
+
 ## Table of Contents
 - [Installation](#installation)
 - [Models](#models)
     - [Loading pretrained models](#loading-pretrained-models)
     - [Summary of results](#summary-of-results)
+    - [Additional Models](#additional-models)
 - [Training](#training)
 - [Evaluation](#evaluation)
 
@@ -245,6 +250,25 @@ are provided in the paper.
         <td>10.9</td>
     </tr>
 </table>
+
+### Additional Models
+We provide the following base-sized adversarially fine-tuned CLIP models and report **zero-shot** classification accuracies. 
+
+| Model             | Backbone            | Link                                                                                                   | Clean | Adv. $\varepsilon=\frac{1}{255}$ | Adv. $\varepsilon=\frac{2}{255}$ | Adv. $\varepsilon=\frac{4}{255}$ |
+|-------------------|---------------------|--------------------------------------------------------------------------------------------------------|-------|----------------------------------|----------------------------------|----------------------------------|
+| TeCoA<sup>1</sup> | ViT-B/32 OpenAI     | [Link](https://nc.mlcloud.uni-tuebingen.de/index.php/s/LHgi84RskrtYCiX/download/vitb32_tecoa_eps_1.pt) | 53.1  | 38.8                             | 26.6                             | 9.6                              |
+| FARE<sup>1</sup>  | ViT-B/32 OpenAI     | [Link](https://nc.mlcloud.uni-tuebingen.de/index.php/s/cCgQAS8QW9arj9d/download/vitb32_fare_eps_1.pt)  | 60.5  | 38.0                             | 20.1                             | 2.9                              |
+| TeCoA<sup>4</sup> | ViT-B/32 OpenAI     | [Link](https://nc.mlcloud.uni-tuebingen.de/index.php/s/RiWGQzBrqYNCaDk/download/vitb32_tecoa_eps_4.pt) | 44.0  | 38.2                             | 33.1                             | 23.6                             |
+| FARE<sup>4</sup>  | ViT-B/32 OpenAI     | [Link](https://nc.mlcloud.uni-tuebingen.de/index.php/s/3nMxBKEwbWnDymT/download/vitb32_fare_eps_4.pt)  | 48.6  | 40.6                             | 33.7                             | 21.9                             |
+| TeCoA<sup>4</sup> | ViT-B/32 LAION 2B   | [Link](https://huggingface.co/chs20/TeCoA4-ViT-B-32-laion2B-s34B-b79K)                                 | 46.8  | 40.6                             | 34.5                             | 23.3                             |
+| FARE<sup>4</sup>  | ViT-B/32 LAION 2B   | [Link](https://huggingface.co/chs20/FARE4-ViT-B-32-laion2B-s34B-b79K)                                  | 53.8  | 44.4                             | 35.5                             | 21.2                             |
+| TeCoA<sup>4</sup> | ViT-B/16 LAION 2B   | [Link](https://huggingface.co/chs20/TeCoA4-ViT-B-16-laion2B-s34B-b88K)                                 | 51.5  | 45.0                             | 38.4                             | 26.4                             |
+| FARE<sup>4</sup>  | ViT-B/16 LAION 2B   | [Link](https://huggingface.co/chs20/FARE4-ViT-B-16-laion2B-s34B-b88K)                                  | 56.6  | 47.7                             | 39.2                             | 23.5                             |
+| TeCoA<sup>4</sup> | ConvNeXt-B LAION 2B | [Link](https://huggingface.co/chs20/TeCoA4-convnext_base_w-laion2B-s13B-b82K-augreg)                   | 56.2  | 50.4                             | 44.1                             | 31.8                             |
+| FARE<sup>4</sup>  | ConvNeXt-B LAION 2B | [Link](https://huggingface.co/chs20/FARE4-convnext_base_w-laion2B-s13B-b82K-augreg)                    | 60.2  | 52.3                             | 44.1                             | 28.4                             |
+
+Except for the first four, these models originate from our [follow-up project](https://github.com/fra31/perceptual-metrics).
+
 
 ## Training
 
