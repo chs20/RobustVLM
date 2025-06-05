@@ -22,6 +22,7 @@ Moreover, we improve the robustness of CLIP to adversarial attacks in zero-shot 
 higher clean accuracy than previous adversarial fine-tuning methods.
 
 ## News
+- In a new [follow-up project](https://github.com/LIONS-EPFL/LEAF), we use an approach similar to FARE in order to obtain *robust CLIP text encoders.* Moreover, we provide FARE models for ViT-H/14 and ViT-g/14 CLIP.
 - Check out our [follow-up project](https://github.com/fra31/perceptual-metrics), where we show that adversarially robust CLIP models are excellent *perceptual metrics*, both in terms of clean performance and robustness.
 - We release robust [base-sized CLIP models](#additional-models).
 
